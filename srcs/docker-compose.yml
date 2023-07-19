@@ -1,0 +1,62 @@
+version: '3.3'
+
+services:
+  nginx:
+    container_name: nginx
+    build: ./requirements/nginx
+
+    restart: always
+    ports:
+      - "443:443"
+    env_file:
+      - .env
+    volumes:
+      - wordpress-data:/var/www/html:delegated
+    networks:
+      - network
+  
+  mariadb:
+    container_name: mariadb
+    build: ./requirements/mariadb
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    networks:
+      - network
+    ports:
+      - "3306:3306"
+    env_file:
+      - .env
+    restart: always
+  
+  wordpress:
+    container_name: wordpress
+    build: ./requirements/wordpress
+    depends_on:
+      - mariadb
+    ports:
+      - "9000:9000"
+    restart: always
+    volumes:
+      - wordpress-data:/var/www/html:delegated
+    networks:
+      - network
+    env_file:
+      - .env
+
+volumes:
+  mariadb_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/pratanac/data/mysql
+      o: bind
+  wordpress-data:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/pratanac/data/wordpress
+      o: bind
+
+networks:
+  network:
+    driver: bridge
