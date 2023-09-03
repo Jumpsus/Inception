@@ -12,6 +12,10 @@ RUN apt install -y wget \
 	php-gd php-cli \
 	php-mbstring
 
+RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
+  && chmod +x wp-cli.phar \
+  && mv wp-cli.phar /usr/local/bin/wp
+
 COPY ./conf/www.conf    /etc/php/7.3/fpm/pool.d
 
 RUN mkdir -p /var/www/html
@@ -31,7 +35,7 @@ RUN ln -sf /dev/stderr /var/log/fpm-php.www.log
 RUN touch /var/log/fpm-php.www.access.log && chmod 666 /var/log/fpm-php.www.access.log
 RUN ln -sf /dev/stdout /var/log/fpm-php.www.access.log
 
-WORKDIR /var/www/html/
+WORKDIR /var/www/html
 
 EXPOSE 9000
 

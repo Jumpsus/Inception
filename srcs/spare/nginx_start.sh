@@ -1,1 +1,0 @@
-openssl req -newkey rsa:4096 -x509 -days 365 -nodes -keyout /etc/nginx/ssl/pratanac.key -out /etc/nginx/ssl/pratanac.csr -subj "/C=TH/ST=Bangkok/L=Bangkok/O=42/OU=pratanac/CN=pratanac"
