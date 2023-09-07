@@ -19,7 +19,6 @@ RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli
 COPY ./conf/www.conf    /etc/php/7.3/fpm/pool.d
 
 RUN mkdir -p /var/www/html
-# COPY ./conf/index.php	/var/www/html/index.php
 
 RUN mkdir /run/php
 

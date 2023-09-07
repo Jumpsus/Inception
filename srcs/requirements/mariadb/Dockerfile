@@ -18,5 +18,4 @@ RUN chmod +x  /usr/local/bin/wordpress.sql
 
 ENTRYPOINT [ "/usr/local/bin/start.sh" ]
 
-# RUN service mysql start  && bash /usr/local/bin/start.sh && rm -f /usr/local/bin/wordpress.sql;
 CMD ["mysqld", "--bind-address=0.0.0.0", "--user=mysql"]

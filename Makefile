@@ -11,4 +11,5 @@ clean:
 	docker volume rm $$(docker volume ls -q);\
 	docker network rm $$(docker network ls -q);
 
-re: @docker compose -f ./srcs/docker-compose.yml up -d --build
+re: 
+	@docker compose -f ./srcs/docker-compose.yml up -d --build

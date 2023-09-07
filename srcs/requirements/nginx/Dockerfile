@@ -4,7 +4,6 @@ RUN apt update
 RUN apt install -y nginx openssl
 
 EXPOSE 443
-# EXPOSE 80
 
 COPY ./conf/nginx.conf      /etc/nginx/conf.d
 

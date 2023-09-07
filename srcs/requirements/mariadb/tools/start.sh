@@ -1,7 +1,4 @@
-#!/bin/bash
-
-# docker build . -t maria:1.0.0
-# docker run --env-file /home/pratanac/Inception/srcs/.env -v /home/pratanac/data/mysql:/var/lib/mysql -p 3306:3306 maria:1.0.0
+#!/bin/sh
 
 mariadb --version
 
